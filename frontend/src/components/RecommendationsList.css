@@ -1,0 +1,21 @@
+/* @@@@@@@@@@ Song list related @@@@@@@@@@ */
+.song-list-wrapper{
+  display: flex;
+  justify-content: center;
+}
+.song-list{
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+  justify-content: center;
+  align-items: center;
+  gap: 36px;
+  padding-bottom: 5%;
+}
+
+/* @@@@@@@@@@ Media breakpoints @@@@@@@@@@ */
+@media (max-width: 701px){
+  .song-list{ width: 90% !important; padding-top:3% !important; }
+}

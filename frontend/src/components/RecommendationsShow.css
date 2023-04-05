@@ -1,0 +1,38 @@
+/* @@@@@@@@@@ Song show related @@@@@@@@@@*/
+a{ text-decoration: none; color: #adf8da; }
+.individual-song-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  border: 2px solid black;
+  padding: 2% 1% 1%;
+  max-width: 50%;
+
+  /* Glassy background */
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15.4px);
+  -webkit-backdrop-filter: blur(15.4px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.song-image{
+  width: 280px;
+  height: 280px;
+}
+audio::-webkit-media-controls-panel { background-color: rgba(222, 160, 30, 0.5); }
+.song-name{
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+.song-artist{
+  font-style: italic;
+}
+
+/* @@@@@@@@@@ Media breakpoints @@@@@@@@@@*/
+@media (max-width: 701px){
+  .individual-song-wrapper{ max-width: 90% !important; }
+}

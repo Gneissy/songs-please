@@ -1,0 +1,106 @@
+html{
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+body{
+  font-family: Montserrat, sans-serif;
+  background: rgb(13,17,23);
+  background: linear-gradient(90deg,rgba(13,17,23,1) 0%, rgba(15, 60, 75, 1) 100%);
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.main-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100svh;
+}
+
+/* @@@@@@@@@@ Form Related @@@@@@@@@@ */
+.interaction-field-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5% 0;
+}
+.title-text{
+  color: white;
+  font-size: 1.5rem;
+  margin: 3% 0;
+}
+.title-span__first{
+  font-size: 1.7rem;
+  color: #DEA01E;
+  text-shadow: 3px 3px 20px #DEA01E, -2px 1px 30px #DEA01E;
+}
+.title-span__second{
+  font-size: 1.7rem;
+  color: #adf8da;
+  text-shadow: 3px 3px 20px #adf8da, -2px 1px 30px #adf8da;
+}
+.form-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 36px;
+  color: white;
+  margin: 5% 0 2%;
+}
+input{
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border-bottom: 1px #adf8da solid;
+  min-width: 15svw;
+  transition: all 1s ease-out;
+  caret-color: #adf8da;
+  color: white;
+  text-align: center;
+  font-size: 1.1rem;
+}
+.submit-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #adf8da;
+  padding: 10px;
+  transition: 0.5s ease;
+  cursor: pointer;
+  border-radius: 16px;
+  border: none;
+  background-color: transparent;
+}
+.submit-btn:hover {
+  color: rgba(222, 160, 30, 1);
+  box-shadow: 0 2px 15px rgba(222, 160, 30, 0.5);
+}
+
+/* @@@@@@@@@@ Loading Text Related @@@@@@@@@@ */
+.loading-text{
+  color:rgba(222, 160, 30, 0.7);
+  font-size: 1.5rem;
+}
+
+.loading-text span::after {
+  content: "";
+  animation: dotAnimation 1s infinite;
+  position: absolute;
+  font-size: 1.5rem;
+}
+@keyframes dotAnimation {
+  0% { content: ""; }
+  25% { content: "."; }
+  50% { content: ".."; }
+  75% { content: "..."; }
+}
