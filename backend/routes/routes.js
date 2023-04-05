@@ -8,7 +8,8 @@ const Song = require("../models/song");
 // Bringing in Controllers
 const { getRecommendedSongs, postInputSongs } = require("../controllers/controllers");
 
+// Routers
 router.get("/recommendations", getRecommendedSongs);
-router.post("./recommendations", postInputSongs);
+router.post("/recommendations", postInputSongs);
 
 module.exports = router;
