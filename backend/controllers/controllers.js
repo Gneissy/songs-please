@@ -19,7 +19,7 @@ let inputSongs = []; // To be able to use in both route
 const getRecommendedSongs = async function (req, res){
 
     const userId = req.query.userId;
-    const inputSongs = req.query.inputSongs.split(",");
+    const inputSongs = req.query.inputSongs?.split(",");
     // console.log(userId, inputSongs);
 
     const recommendedSongs = await Song.find({
@@ -139,7 +139,7 @@ const postInputSongs = async function (req, res){
                       console.error(err);
                     });
             }
-            res.status(200);
+            res.status(200).redirect(`/recommendations?userId=${userId}&inputSongs=${inputSong1},${inputSong2},${inputSong3}`);
         }
 
         // redirect(`${backendServer}/recommendations?userId=${userId}&inputSongs=${inputSong1},${inputSong2},${inputSong3}`);
