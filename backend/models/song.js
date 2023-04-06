@@ -2,6 +2,7 @@ const mongoose = require ("mongoose");
 
 const songSchema = new mongoose.Schema({
   inputSongs: [String],
+  userId: String,
   songArtist: String,
   songName: String,
   songSpotifyURL: String,

@@ -1,3 +1,5 @@
+
+
 // Spotify connection
 const spotifyApi = require("../config/spotifyApi");
 
@@ -8,17 +10,26 @@ const Song = require("../models/song");
 // Default parameters
 const loadQuantity = 10; // I may add an extension button like "add more"
 let inputSongs = []; // To be able to use in both route
-
+let userId = "";
 
 // @@@@@@@@@@ getRecommendedSongs @@@@@@@@@@
 const getRecommendedSongs = async function (req, res){
-    const recommendedSongs = await Song.find({ inputSongs: inputSongs });
+    console.log(inputSongs); // works
+    console.log(userId); // Works
+
+    const recommendedSongs = await Song.find({
+      inputSongs: inputSongs,
+      userId: userId
+    });
     res.json(recommendedSongs);
+    console.log(recommendedSongs);
 }
+
 
 // @@@@@@@@@@ postInputSongs @@@@@@@@@@
 const postInputSongs = async function (req, res){
     inputSongs = [req.body.inputSong1, req.body.inputSong2, req.body.inputSong3];
+    userId = req.body.userId;
 
     const trackIds = [];
 
@@ -71,6 +82,7 @@ const postInputSongs = async function (req, res){
               const recommendedSong = new RecommendedSong({
                   inputSongs: inputSongs, // 3 user input
                   recommendedSongId: recommendedTrack.id,
+                  userId: userId
               });
               await recommendedSong.save();
         }
@@ -79,7 +91,7 @@ const postInputSongs = async function (req, res){
 
           // RecommendedSongs are all songs recommended by spotify api.
           // Fetching them from my api via finding by inputSongs.
-          const recommendedSongs = await RecommendedSong.find({inputSongs: inputSongs});
+          const recommendedSongs = await RecommendedSong.find({inputSongs: inputSongs, userId:userId});
 
           // New array declaration. It will contain recommendedSongId for each recommendedSongs object.
           const recommendedSongsIds = [];
@@ -105,6 +117,7 @@ const postInputSongs = async function (req, res){
                       // Each song will be saved into "song" collection, which is the object i'll display with React.
                       const newSong = new Song({
                           inputSongs: inputSongs,
+                          userId: userId,
                           songArtist: songArtist,
                           songName: songName,
                           songSpotifyURL: songSpotifyURL,

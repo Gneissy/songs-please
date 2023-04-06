@@ -6,8 +6,19 @@ import Footer from "./components/Footer"
 
 import "./App.css";
 import axios from "axios";
+import { v4 as uuidv4 } from 'uuid';
 
 function App(){
+
+  // const backendServer = "https://songs-please.onrender.com";
+  const backendServer = "http://localhost:3000";
+
+  const random = localStorage.getItem('random') || uuidv4();
+  localStorage.setItem('random', random);
+
+  document.cookie = `userId=${random}; expires=Fri, 31 Dec 9999 23:59:59 GMT`;
+  const userId = document.cookie.split(';').find(cookie => cookie.startsWith('userId=')).split('=')[1];
+  console.log(userId);
 
   // input states
   const [inputSong1, setInputSong1] = useState("");
@@ -34,11 +45,12 @@ function App(){
             const formData = {
                 inputSong1: inputSong1,
                 inputSong2: inputSong2,
-                inputSong3: inputSong3
+                inputSong3: inputSong3,
+                userId: userId
             };
 
             // Send post request to spotify api, with user input
-            const response = await axios.post("https://songs-please.onrender.com/recommendations", formData);
+            const response = await axios.post( backendServer + "/recommendations", formData);
             // console.log(response.data);
             setResults(response.data);
             setInputSong1("");
@@ -47,14 +59,15 @@ function App(){
       setLoading(false);
   }
 
-  // useEffect at the first render, get current data requested
-  useEffect(function(){
-      async function fetchData(){
-          const results = await axios.get("https://songs-please.onrender.com/recommendations");
-          setResults(results.data);
-      }
-      fetchData();
-  }, []);
+      // useEffect at the first render, get current data requested
+      useEffect(function(){
+          async function fetchData(){
+              const results = await axios.get(`${backendServer}/recommendations&userId=${userId}`);
+              setResults(results.data);
+          }
+          fetchData();
+      }, [ userId ]);
+
 
 
   // Send "results" as "results" prop.
