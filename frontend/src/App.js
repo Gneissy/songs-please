@@ -62,7 +62,7 @@ function App(){
       // useEffect at the first render, get current data requested
       useEffect(function(){
           async function fetchData(){
-              const results = await axios.get(`${backendServer}/recommendations?userId=${userId}`);
+              const results = await axios.get(`${backendServer}/recommendations?userId=${userId}&inputSongs=${inputSong1},${inputSong2},${inputSong3}`);
               setResults(results.data);
           }
           fetchData();

@@ -15,20 +15,23 @@ let inputSongs = []; // To be able to use in both route
 const getRecommendedSongs = async function (req, res){
 
     const userId = req.query.userId;
-    console.log(inputSongs); // works
-    console.log(userId); // Works
+    const inputSongs = req.query.inputSongs.split(",");
+    console.log(userId, inputSongs);
 
     const recommendedSongs = await Song.find({
-      inputSongs: { $in: inputSongs },
+      inputSongs: inputSongs,
       userId: userId
     });
     res.json(recommendedSongs);
-    // console.log(recommendedSongs);
 }
 
 
 // @@@@@@@@@@ postInputSongs @@@@@@@@@@
 const postInputSongs = async function (req, res){
+    const inputSong1 = req.body.inputSong1;
+    const inputSong2 = req.body.inputSong2;
+    const inputSong3 = req.body.inputSong3;
+
     inputSongs = [req.body.inputSong1, req.body.inputSong2, req.body.inputSong3];
     userId = req.body.userId;
 
@@ -132,7 +135,7 @@ const postInputSongs = async function (req, res){
                       console.error(err);
                     });
             }
-            res.status(200).redirect("/recommendations?userId=" + userId);
+            res.status(200).redirect(`/recommendations?userId=${userId}&inputSongs=${inputSong1},${inputSong2},${inputSong3}`);
         }
 
         // If none of the 3 input songs are valid
