@@ -10,8 +10,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 function App(){
 
-  // const backendServer = "https://songs-please.onrender.com";
-  const backendServer = "http://localhost:3000";
+  const backendServer = "https://songs-please.onrender.com";
+  // const backendServer = "http://localhost:3000";
 
   // Personal usage for every single user
   const random = localStorage.getItem('random') || uuidv4();
@@ -62,8 +62,12 @@ function App(){
       // useEffect at the first render, get current data requested
       useEffect(function(){
           async function fetchData(){
-              const results = await axios.get(`${backendServer}/recommendations?userId=${userId}&inputSongs=${inputSong1},${inputSong2},${inputSong3}`);
-              setResults(results.data);
+            const params = {
+                userId: userId,
+                inputSongs: `${inputSong1},${inputSong2},${inputSong3}`
+            };
+            const results = await axios.get(`${backendServer}/recommendations`, { params });
+            setResults(results.data);
           }
           fetchData();
       }, [userId]);

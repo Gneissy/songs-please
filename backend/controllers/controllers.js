@@ -7,10 +7,6 @@ const spotifyApi = require("../config/spotifyApi");
 const RecommendedSong = require("../models/recommendedSong");
 const Song = require("../models/song");
 
-// Servers
-const backendServer = "https://songs-please.onrender.com";
-// const backendServer = "http://localhost:3000";
-
 // Default parameters
 const loadQuantity = 10; // I may add an extension button like "add more"
 let inputSongs = []; // To be able to use in both route
@@ -18,16 +14,16 @@ let inputSongs = []; // To be able to use in both route
 // @@@@@@@@@@ getRecommendedSongs @@@@@@@@@@
 const getRecommendedSongs = async function (req, res){
 
-    const userId = req.query.userId;
-    const inputSongs = req.query.inputSongs?.split(",");
-    // console.log(userId, inputSongs);
+const userId = req.query.userId;
+const inputSongs = req.query.inputSongs?.split(",");
+// console.log(userId, inputSongs);
 
-    const recommendedSongs = await Song.find({
-      inputSongs: inputSongs,
-      userId: userId
+const recommendedSongs = await Song.find({
+        inputSongs: inputSongs,
+        userId: userId
     });
     res.json(recommendedSongs);
-}
+}   
 
 
 // @@@@@@@@@@ postInputSongs @@@@@@@@@@
