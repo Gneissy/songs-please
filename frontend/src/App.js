@@ -38,7 +38,7 @@ function App(){
             };
 
             // Send post request to spotify api, with user input
-            const response = await axios.post("http://localhost:3000/recommendations", formData);
+            const response = await axios.post("https://songs-please.onrender.com/recommendations", formData);
             // console.log(response.data);
             setResults(response.data);
             setInputSong1("");
@@ -50,7 +50,7 @@ function App(){
   // useEffect at the first render, get current data requested
   useEffect(function(){
       async function fetchData(){
-          const results = await axios.get("http://localhost:3000/recommendations");
+          const results = await axios.get("https://songs-please.onrender.com/recommendations");
           setResults(results.data);
       }
       fetchData();
