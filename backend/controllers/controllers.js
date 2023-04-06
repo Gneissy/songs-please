@@ -16,7 +16,7 @@ const getRecommendedSongs = async function (req, res){
 
     const userId = req.query.userId;
     const inputSongs = req.query.inputSongs.split(",");
-    console.log(userId, inputSongs);
+    // console.log(userId, inputSongs);
 
     const recommendedSongs = await Song.find({
       inputSongs: inputSongs,

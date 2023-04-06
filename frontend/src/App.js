@@ -10,15 +10,15 @@ import { v4 as uuidv4 } from 'uuid';
 
 function App(){
 
-  // const backendServer = "https://songs-please.onrender.com";
-  const backendServer = "http://localhost:3000";
+  const backendServer = "https://songs-please.onrender.com";
+  // const backendServer = "http://localhost:3000";
 
   // Personal usage for every single user
   const random = localStorage.getItem('random') || uuidv4();
   localStorage.setItem('random', random);
   document.cookie = `userId=${random}; expires=Fri, 31 Dec 9999 23:59:59 GMT`;
   const userId = document.cookie.split(';').find(cookie => cookie.startsWith('userId=')).split('=')[1];
-  console.log(userId);
+  // console.log(userId);
 
   // input states
   const [inputSong1, setInputSong1] = useState("");
