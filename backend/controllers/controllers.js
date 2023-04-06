@@ -7,6 +7,10 @@ const spotifyApi = require("../config/spotifyApi");
 const RecommendedSong = require("../models/recommendedSong");
 const Song = require("../models/song");
 
+// Servers
+const backendServer = "https://songs-please.onrender.com";
+// const backendServer = "http://localhost:3000";
+
 // Default parameters
 const loadQuantity = 10; // I may add an extension button like "add more"
 let inputSongs = []; // To be able to use in both route
