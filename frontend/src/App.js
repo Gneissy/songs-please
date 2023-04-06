@@ -13,9 +13,9 @@ function App(){
   // const backendServer = "https://songs-please.onrender.com";
   const backendServer = "http://localhost:3000";
 
+  // Personal usage for every single user
   const random = localStorage.getItem('random') || uuidv4();
   localStorage.setItem('random', random);
-
   document.cookie = `userId=${random}; expires=Fri, 31 Dec 9999 23:59:59 GMT`;
   const userId = document.cookie.split(';').find(cookie => cookie.startsWith('userId=')).split('=')[1];
   console.log(userId);
@@ -62,11 +62,11 @@ function App(){
       // useEffect at the first render, get current data requested
       useEffect(function(){
           async function fetchData(){
-              const results = await axios.get(`${backendServer}/recommendations&userId=${userId}`);
+              const results = await axios.get(`${backendServer}/recommendations?userId=${userId}`);
               setResults(results.data);
           }
           fetchData();
-      }, [ userId ]);
+      }, [userId]);
 
 
 

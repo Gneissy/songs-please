@@ -10,19 +10,20 @@ const Song = require("../models/song");
 // Default parameters
 const loadQuantity = 10; // I may add an extension button like "add more"
 let inputSongs = []; // To be able to use in both route
-let userId = "";
 
 // @@@@@@@@@@ getRecommendedSongs @@@@@@@@@@
 const getRecommendedSongs = async function (req, res){
+
+    const userId = req.query.userId;
     console.log(inputSongs); // works
     console.log(userId); // Works
 
     const recommendedSongs = await Song.find({
-      inputSongs: inputSongs,
+      inputSongs: { $in: inputSongs },
       userId: userId
     });
     res.json(recommendedSongs);
-    console.log(recommendedSongs);
+    // console.log(recommendedSongs);
 }
 
 
@@ -131,7 +132,7 @@ const postInputSongs = async function (req, res){
                       console.error(err);
                     });
             }
-            res.status(200).redirect("/recommendations");
+            res.status(200).redirect("/recommendations?userId=" + userId);
         }
 
         // If none of the 3 input songs are valid
