@@ -135,7 +135,7 @@ const postInputSongs = async function (req, res){
                       console.error(err);
                     });
             }
-            res.status(200).redirect(`/recommendations?userId=${userId}&inputSongs=${inputSong1},${inputSong2},${inputSong3}`);
+            res.status(200).redirect(`${backendServer}/recommendations?userId=${userId}&inputSongs=${inputSong1},${inputSong2},${inputSong3}`);
         }
 
         // If none of the 3 input songs are valid
