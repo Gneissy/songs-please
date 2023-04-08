@@ -50,7 +50,7 @@ function App(){
             };
 
             // Send post request to spotify api, with user input
-            const response = await axios.post( backendServer + "/recommendations", formData);
+            const response = await axios.post( `${backendServer}/recommendations/${userId}`, formData);
             // console.log(response.data);
             setResults(response.data);
             setInputSong1("");
@@ -72,7 +72,7 @@ function App(){
             }
           }
           fetchData();
-      }, [userId]);
+      }, []);
 
 
 

@@ -10,6 +10,6 @@ const { getRecommendedSongs, postInputSongs } = require("../controllers/controll
 
 // Routers
 router.get("/recommendations", getRecommendedSongs);
-router.post("/recommendations", postInputSongs);
+router.post("/recommendations/:userId", postInputSongs);
 
 module.exports = router;
