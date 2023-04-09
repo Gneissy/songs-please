@@ -56,7 +56,6 @@ On top of <em>App.js</em>, uncomment following line of code:
 
 
 <h2><strong>4. Start the app</strong></h2>
-<br>
 <h5>In the first terminal:</h5>
 <pre class="notranslate">
   <code>
