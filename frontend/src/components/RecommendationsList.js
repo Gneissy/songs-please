@@ -1,6 +1,6 @@
 import React from "react";
 import RecommendationsShow from "./RecommendationsShow"
-import "./RecommendationsList.css"
+import "./styles/RecommendationsList.css"
 
 function RecommendationsList( { results } ){
     const renderedSongs = results.map(function (song){

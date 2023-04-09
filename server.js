@@ -22,7 +22,7 @@ app.use(router);
 
 // Running the server with database
 connectDB().then(function (){
-      app.listen(process.env.PORT || 3000, function() {
+      app.listen(process.env.PORT || 3001, function() {
             console.log("Server is on and ready to wrack baby");
       });
 });

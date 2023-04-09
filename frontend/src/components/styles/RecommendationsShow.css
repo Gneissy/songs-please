@@ -33,6 +33,6 @@ audio::-webkit-media-controls-panel { background-color: rgba(222, 160, 30, 0.5);
 }
 
 /* @@@@@@@@@@ Media breakpoints @@@@@@@@@@*/
-@media (max-width: 701px){
+@media (max-width: 901px){
   .individual-song-wrapper{ max-width: 90% !important; }
 }

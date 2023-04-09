@@ -11,7 +11,7 @@ import { v4 as uuidv4 } from 'uuid';
 function App(){
 
   const backendServer = "https://songs-please.onrender.com";
-  // const backendServer = "http://localhost:3000";
+  // const backendServer = "http://localhost:3001";
 
   // Personal usage for every single user
   const random = localStorage.getItem('random') || uuidv4();
@@ -81,24 +81,24 @@ function App(){
   // Show client "Let me check" if loading process is still going on. If done, show RecommendationsList.
   return(
       <div className = "main-container" >
-      <Navbar />
-      <div className = "interaction-field-box">
-      <p className = "title-text"><span className = "title-span__first" >Give 3</span> songs you love, </p>
-      <p className = "title-text"><span className = "title-span__second" >Get 10</span> songs you may like! </p>
+          <Navbar />
+          <div className = "interaction-field-box">
+              <p className = "title-text"><span className = "title-span__first" >Give 3</span> songs you love, </p>
+              <p className = "title-text"><span className = "title-span__second" >Get 10</span> songs you may like. </p>
 
-      <form className = "form-box" onSubmit = {handleSubmit}>
-          <label>
-              <input type="text" value={inputSong1} onChange={onChange1} />
-          </label>
-          <label>
-              <input type="text" value={inputSong2} onChange={onChange2} />
-          </label>
-          <label>
-              <input type="text" value={inputSong3} onChange={onChange3} />
-          </label>
-          <button className = "submit-btn" type="submit">Get Recommendations!</button>
-      </form>
-      </div>
+              <form className = "form-box" onSubmit = {handleSubmit} noValidate>
+                  <label>
+                      <input type="text" value={inputSong1} onChange={onChange1} />
+                  </label>
+                  <label>
+                      <input type="text" value={inputSong2} onChange={onChange2} />
+                  </label>
+                  <label>
+                      <input type="text" value={inputSong3} onChange={onChange3} />
+                  </label>
+                  <button className = "submit-btn" type="submit">Get Recommendations!</button>
+              </form>
+          </div>
           {loading ? <p className="loading-text">Let me check<span></span></p> : <RecommendationsList results={results} />}
           <Footer />
       </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import "./RecommendationsShow.css";
+import "./styles/RecommendationsShow.css";
 
 function RecommendationsShow( { song } ){
 
