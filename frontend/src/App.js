@@ -10,8 +10,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 function App(){
 
-  // const backendServer = "https://songs-please.onrender.com";
-  const backendServer = "http://localhost:3001";
+  const backendServer = "https://songs-please.onrender.com";
+  // const backendServer = "http://localhost:3001";
 
   // Personal usage for every single user
   const random = localStorage.getItem('random') || uuidv4();
