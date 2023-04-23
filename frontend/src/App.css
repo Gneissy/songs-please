@@ -22,6 +22,31 @@ body{
   min-height: 100svh;
 }
 
+/* @@@@@@@@@@ Scrollbar Related @@@@@@@@@@ */
+::-webkit-scrollbar {
+  width: .5rem;
+  background: rgba(15, 60, 75, 1);
+}
+::-webkit-scrollbar-track {
+  margin-block: .5rem;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(222, 160, 30, .75);
+  border: .1rem transparent solid;
+  border-radius: 100svw;
+  transition: all 1s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #097CB8;
+}
+
+/* In case it's not supported (like maybe in Firefox) */
+@supports (scrollbar-color: rgba(222, 160, 30, 0.5) rgba(15, 60, 75, 1)){
+  * {
+    scrollbar-color: rgba(222, 160, 30, 0.5) rgba(15, 60, 75, 1);
+  }
+}
+
 
 /* @@@@@@@@@@ Form Related @@@@@@@@@@ */
 .interaction-field-box{
